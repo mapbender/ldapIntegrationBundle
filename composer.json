@@ -3,7 +3,7 @@
     "description": "Searchable ldap integration for Mapbender",
     "keywords": ["mapbender", "ldap"],
     "type": "library",
-    "license": "MIT",
+    "license": "ISC",
     "authors": [
         {
             "name": "Arne Schubert <atd.schubert@gmail.com>"
