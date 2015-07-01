@@ -101,3 +101,7 @@
 
     user_class: Mapbender\LdapIntegrationBundle\Entity\LdapUser
     ```
+    
+## Notice
+
+At the moment you has to set `"minimum-stability": "dev"` in your project `composer.json`!
