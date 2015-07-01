@@ -3,11 +3,17 @@
 
 ## How to install
 
-1. Add bundle with composer
+1. Add bundle as entry to `composer.json` and after that install with from console with `composer install`
 
-  ```bash
-  
-  composer install --save mapbender/ldapintegration
+  ```json
+  {
+    "require": {
+      "mapbender/ldapintegration": "*"
+    },
+    "repositories": [
+      {"type": "git","url": "https://github.com/mapbender/ldapIntegrationBundle.git"}
+    ]
+  }
   
   ```
 
@@ -17,6 +23,7 @@
   //...
   $bundles = array(
     //...
+    new IMAG\LdapBundle\IMAGLdapBundle(),
     new Mapbender\LdapIntegrationBundle\LdapIntegrationBundle(),
     //...
   //...
