@@ -11,8 +11,7 @@ use Monolog\Logger;
  *
  * Copied and extended from IMAG\LdapBundle\Manager\LdapConnection;
  *
- * @package   Mapbender\AlkisBundle\Component
- * @author    Andriy Oblivantsev <eslider@gmail.com>
+ * @author    Arne
  * @copyright 2015 by WhereGroup GmbH & Co. KG
  */
 class LdapConnection implements LdapConnectionInterface
@@ -274,5 +273,3 @@ class LdapConnection implements LdapConnectionInterface
         return ($str);
     }
 }
-
-
