@@ -76,30 +76,30 @@
   3. Pipe imag_ldap settings from `parameters.yml` and add `user_class` like configured in step 5.1.
     ```yml
     imag_ldap:
-    client:
-        host: %ldap_host%
-        port: %ldap_port%
-        version: %ldap_version% # Optional
-    #    username: cn=admin,dc=ldap,dc=kap24,dc=net # Optional
-    #    password: test # Optional
-    #    network_timeout: 10 # Optional
-    #    referrals_enabled: true # Optional
-    #    bind_username_before: true # Optional
-    #    skip_roles: true # Optional
+        client:
+            host: %ldap_host%
+            port: %ldap_port%
+            version: %ldap_version% # Optional
+            username: %ldap_bind_dn% # Optional
+            password: %ldap_bind_pwd% # Optional
+    #        network_timeout: 10 # Optional
+    #        referrals_enabled: true # Optional
+    #        bind_username_before: true # Optional
+    #        skip_roles: true # Optional
 
-    user:
-        base_dn: %ldap_user_base_dn%
-    #    filter: (ObjectClass=posixAccount) #Optional
-        name_attribute:  %ldap_user_name_attribute%
+        user:
+            base_dn: %ldap_user_base_dn%
+            filter: %ldap_user_search_filter% #Optional
+            name_attribute:  %ldap_user_name_attribute%
 
-    role:
-        base_dn: %ldap_role_base_dn%
-    ##    filter: (ou=group) #Optional
-        name_attribute:  %ldap_role_name_attribute%
-        user_attribute: %ldap_role_user_attribute%
-        user_id: %ldap_role_user_id%
+        role:
+            base_dn: %ldap_role_base_dn%
+    #        filter: (ou=group) #Optional
+            name_attribute:  %ldap_role_name_attribute%
+            user_attribute: %ldap_role_user_attribute%
+            user_id: %ldap_role_user_id%
 
-    user_class: Mapbender\LdapIntegrationBundle\Entity\LdapUser
+        user_class: Mapbender\LdapIntegrationBundle\Entity\LdapUser
     ```
     
 ## Notice
