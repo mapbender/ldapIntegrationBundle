@@ -15,7 +15,7 @@ class ApplicationController extends BaseApplicationController
      *
      * @Route("/application/new", name="mapbender_manager_application_new")
      * @Method("GET")
-     * @Template("MapbenderAlkisBundle:Application:new.html.twig")
+     * @Template("MapbenderLdapIntegrationBundle:Application:new.html.twig")
      */
     public function newAction()
     {
@@ -27,7 +27,7 @@ class ApplicationController extends BaseApplicationController
      *
      * @Route("/application/{slug}/edit", requirements = { "slug" = "[\w-]+" }, name="mapbender_manager_application_edit")
      * @Method("GET")
-     * @Template("MapbenderAlkisBundle:Application:edit.html.twig")
+     * @Template("MapbenderLdapIntegrationBundle:Application:edit.html.twig")
      */
     public function editAction($slug)
     {
