@@ -1,5 +1,6 @@
 {
     "name": "mapbender/ldapintegration",
+    "version": "0.1.1",
     "description": "Searchable ldap integration for Mapbender",
     "keywords": ["mapbender", "ldap"],
     "type": "library",

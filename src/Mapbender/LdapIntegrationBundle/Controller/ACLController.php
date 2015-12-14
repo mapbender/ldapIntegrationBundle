@@ -37,9 +37,18 @@ class ACLController extends BaseACLController
         $roleBaseDn        = $this->container->getParameter("ldap_role_base_dn");
         $roleNameAttribute = $this->container->getParameter("ldap_role_name_attribute");
         $nameAttribute     = $this->container->getParameter("ldap_user_name_attribute");
+        $bindDn            = $this->container->getParameter("ldap_bind_dn");
+        $bindPasswd        = $this->container->getParameter("ldap_bind_pwd");
 
         $connection = @ldap_connect($ldapHostname, $ldapPort);
         ldap_set_option($connection, LDAP_OPT_PROTOCOL_VERSION, $ldapVersion);
+
+        if (strlen(bindDn) !== 0 && strlen(bindPasswd) !== 0) {
+            if (!ldap_bind($connection, $bindDn, $bindPasswd)) {
+                throw exeption('Unable to bind LDAP to DN: ' . bindDn);
+            }
+
+        }
 
         // Add Users from LDAP
         $filter = "(" . $nameAttribute . "=*" . $slug . "*)";
