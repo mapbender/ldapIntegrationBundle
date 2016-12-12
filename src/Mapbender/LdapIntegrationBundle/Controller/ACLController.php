@@ -2,8 +2,8 @@
 
 namespace Mapbender\LdapIntegrationBundle\Controller;
 
-use FOM\UserBundle\Controller\ACLController as BaseACLController;
 use FOM\ManagerBundle\Configuration\Route;
+use FOM\UserBundle\Controller\ACLController as BaseACLController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
@@ -39,13 +39,12 @@ class ACLController extends BaseACLController
         $nameAttribute     = $this->container->getParameter("ldap_user_name_attribute");
         $bindDn            = $this->container->getParameter("ldap_bind_dn");
         $bindPasswd        = $this->container->getParameter("ldap_bind_pwd");
-
-        $connection = @ldap_connect($ldapHostname, $ldapPort);
+        $connection        = @ldap_connect($ldapHostname, $ldapPort);
         ldap_set_option($connection, LDAP_OPT_PROTOCOL_VERSION, $ldapVersion);
 
-        if (strlen(bindDn) !== 0 && strlen(bindPasswd) !== 0) {
+        if (strlen($bindDn) !== 0 && strlen($bindPasswd) !== 0) {
             if (!ldap_bind($connection, $bindDn, $bindPasswd)) {
-                throw exeption('Unable to bind LDAP to DN: ' . bindDn);
+                throw new \Exception('Unable to bind LDAP to DN: ' . $bindDn);
             }
 
         }
@@ -56,7 +55,7 @@ class ACLController extends BaseACLController
         $ldapListRequest = ldap_search($connection, $baseDn, $filter);
 
         if (!$ldapListRequest) {
-            throw exeption('Unable to search in LDAP. LdapError: ' . ldap_error($ldapConnection));
+            throw new \Exception('Unable to search in LDAP. LdapError: ' . ldap_error($connection));
         }
         $ldapUserList = ldap_get_entries($connection, $ldapListRequest);
 
@@ -75,7 +74,7 @@ class ACLController extends BaseACLController
         $ldapListRequest = ldap_search($connection, $roleBaseDn, $filter);
 
         if (!$ldapListRequest) {
-            throw exeption('Unable to search in LDAP. LdapError: ' . ldap_error($ldapConnection));
+            throw new \Exception('Unable to search in LDAP. LdapError: ' . ldap_error($connection));
         }
         $ldapGroupList = ldap_get_entries($connection, $ldapListRequest);
 
