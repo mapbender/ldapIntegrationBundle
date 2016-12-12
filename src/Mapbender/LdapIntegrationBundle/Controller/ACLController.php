@@ -111,6 +111,19 @@ class ACLController extends BaseACLController
     }
 
     /**
+     * @Route("/acl/overview", name="fom_user_acl_overview")
+     * @Method({ "GET" })
+     * @Template("MapbenderLdapIntegrationBundle:ACL:groups-and-users.html.twig")
+     */
+    public function overviewAction(){
+        // $idProvider = $this->get('fom.identities.provider');
+        // $groups = $idProvider->getAllGroups();
+        // $users  = $idProvider->getAllUsers();
+        // return array('groups' => $groups, 'users' => $users);
+        return array();
+    }
+
+    /**
      * @Route("/acl/edit", name="fom_user_acl_edit")
      * @Method("GET")
      * @Template("MapbenderLdapIntegrationBundle:ACL:edit.html.twig")
