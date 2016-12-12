@@ -43,9 +43,9 @@ class ACLController extends BaseACLController
         $connection = @ldap_connect($ldapHostname, $ldapPort);
         ldap_set_option($connection, LDAP_OPT_PROTOCOL_VERSION, $ldapVersion);
 
-        if (strlen(bindDn) !== 0 && strlen(bindPasswd) !== 0) {
+        if (strlen($bindDn) !== 0 && strlen($bindPasswd) !== 0) {
             if (!ldap_bind($connection, $bindDn, $bindPasswd)) {
-                throw exeption('Unable to bind LDAP to DN: ' . bindDn);
+                throw exeption('Unable to bind LDAP to DN: ' . $bindDn);
             }
 
         }
@@ -56,7 +56,7 @@ class ACLController extends BaseACLController
         $ldapListRequest = ldap_search($connection, $baseDn, $filter);
 
         if (!$ldapListRequest) {
-            throw exeption('Unable to search in LDAP. LdapError: ' . ldap_error($ldapConnection));
+            throw exeption('Unable to search in LDAP. LdapError: ' . ldap_error($connection));
         }
         $ldapUserList = ldap_get_entries($connection, $ldapListRequest);
 
@@ -75,7 +75,7 @@ class ACLController extends BaseACLController
         $ldapListRequest = ldap_search($connection, $roleBaseDn, $filter);
 
         if (!$ldapListRequest) {
-            throw exeption('Unable to search in LDAP. LdapError: ' . ldap_error($ldapConnection));
+            throw exeption('Unable to search in LDAP. LdapError: ' . ldap_error($connection));
         }
         $ldapGroupList = ldap_get_entries($connection, $ldapListRequest);
 
@@ -102,6 +102,19 @@ class ACLController extends BaseACLController
      */
     public function searchIndexAction()
     {
+        return array();
+    }
+
+    /**
+     * @Route("/acl/overview", name="fom_user_acl_overview")
+     * @Method({ "GET" })
+     * @Template("MapbenderLdapIntegrationBundle:ACL:groups-and-users.html.twig")
+     */
+    public function overviewAction(){
+        // $idProvider = $this->get('fom.identities.provider');
+        // $groups = $idProvider->getAllGroups();
+        // $users  = $idProvider->getAllUsers();
+        // return array('groups' => $groups, 'users' => $users);
         return array();
     }
 
