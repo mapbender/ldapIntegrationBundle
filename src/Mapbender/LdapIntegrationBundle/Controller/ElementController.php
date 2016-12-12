@@ -16,7 +16,7 @@ class ElementController extends BaseElementController
      *
      * @Route("/application/{slug}/element/{id}/security", requirements={"id" = "\d+"})
      * @Method("GET")
-     * @Template("MapbenderAlkisBundle:Element:security.html.twig")
+     * @Template("MapbenderLdapIntegrationBundle:Element:security.html.twig")
      */
     public function securityAction($slug, $id)
     {
