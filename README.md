@@ -74,7 +74,8 @@
                 providers: ["main", "ldap"]
     ```
   3. Pipe imag_ldap settings from `parameters.yml` and add `user_class` like configured in step 5.1.
-    ```yml
+  
+  ```yml
     imag_ldap:
         client:
             host: %ldap_host%
@@ -100,7 +101,7 @@
             user_id: %ldap_role_user_id%
 
         user_class: Mapbender\LdapIntegrationBundle\Entity\LdapUser
-    ```
+```
     
 ## Notice
 
